@@ -15,21 +15,29 @@
 	<div class="corps">
 		
 		
-			<h1>Liste des personnes test test test test test test </h1>
+			<h1>Liste des personnes </h1>
 	
 	<table class="table">
 		<thead class="thead-inverse">
 		<tr>
+			<th>Prenom</th>
 			<th>Nom</th>
 			<th>Mail</th>
-			<th>Password</th>
+			<th>Adresse</th>
+			<th>Code Postal</th>
+			<th>Ville</th>
+			<th>Téléphone</th>
 		</tr>
 		</thead>
 		<c:forEach items="${membres}" var="membre">
 			<tr>
+				<td>${membre.prenom}</td>
 				<td>${membre.nom}</td>
 				<td>${membre.mail}</td>
-				<td>${membre.password}</td>
+				<td>${membre.adresse}</td>
+				<td>${membre.codePostal}</td>
+				<td>${membre.ville}</td>
+				<td>${membre.telephone}</td>
 			</tr>
 		</c:forEach>
 	</table>

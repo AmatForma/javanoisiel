@@ -36,25 +36,22 @@ public class ConnexionServlet extends HttpServlet {
 
 		try {
 			
-			
 			String mailRecup = request.getParameter("login");
 			String pwdRecup = request.getParameter("password");
-			
-			//String pwd = "azerty";
-			
+						
 			Personne membre = PersonneDao.getByLoginPassword(mailRecup, pwdRecup);
 			
 			
 			if(membre != null){
 				
+                            // Le mettre en session
+                                request.getSession(true).setAttribute("membre", membre);
 				request.setAttribute("membre", membre);
 				request.getRequestDispatcher("/WEB-INF/profil.jsp").forward(request, response);			
 				
 				}
 			else {
-				request.setAttribute("pwd", pwdRecup);
-
-				request.setAttribute("pwdFaux", "Mot de passe incorrecte, Veuillez réessayer ");
+				request.setAttribute("loginFaux", "Utilisateur inconnu ou mot de passe erronnÃ©");
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 
 			}

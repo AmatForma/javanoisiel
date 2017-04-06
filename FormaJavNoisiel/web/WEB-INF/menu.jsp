@@ -42,8 +42,8 @@
                     </li>
 
                     <li >
-                        <a href="">
-                            <i class="#"></i> Formations  
+                        <a href="membre">
+                            <i class=""></i> Membres 
                         </a>
                     </li>
 
@@ -55,19 +55,25 @@
 
                     <li>
                         <a href="#">
-                            <i class=""></i> En Bref
+                            <i class=""></i> Formations
                         </a>
                     </li>
 
                     <li>
                         <a href="#">
-                            <i class=""></i> Aide
+                            <i class=""></i> Sessions
                         </a>
                     </li>
 
                     <li>
                         <a href="#">
-                            <i class=""></i> Déconnexion
+                            <i class=""></i> Candidature
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="#">
+                            <i class=""></i> Evaluation
                         </a>
                     </li>
                 </ul>

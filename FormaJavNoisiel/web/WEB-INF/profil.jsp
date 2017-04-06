@@ -11,7 +11,7 @@
 	<%@ include file="menu.jsp" %>
 	
 	<div class="corps">
-            <h1> Bonjour ${membre.mail} ${membre.getNom()} </h1>
+            <h1> Bonjour ${membre.prenom} ${membre.nom} </h1>
         </div>
 </body>
 </html>

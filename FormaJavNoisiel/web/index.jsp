@@ -28,7 +28,7 @@
 			<button type="submit">Se connecter</button>
 			<br/>
                     </form>
-                    <p>${pwdFaux}</p>
+                    <p>${loginFaux}</p>
 			<a href="inscription"><p class="small">Inscrivez vous ?</p></a>
 		</div>
 	</div>

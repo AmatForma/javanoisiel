@@ -27,6 +27,9 @@ public class PersonneDao {
 		
 		if(resultat.next()){
 			res = new Personne(login, password);
+                        res.setIdPersonne(resultat.getInt("idPersonne"));
+                        res.setNom(resultat.getString("nom"));
+                        res.setPrenom(resultat.getString("prenom"));
 					}
 		
 		
@@ -37,12 +40,17 @@ public class PersonneDao {
 	public static Personne insert(Personne membre) throws SQLException{
 		
 		
-		String sql = "INSERT INTO personne (nom, mail, password) VALUES (?, ?, ?)";
+		String sql = "INSERT INTO personne (prenom, nom, mail, adresse, codePostal, ville, password, telephone) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		Connection connexion = AmatDao.getConnection();
 		PreparedStatement ordre = connexion.prepareStatement(sql);
-		ordre.setString(1, membre.getNom());
-		ordre.setString(2, membre.getMail());
-		ordre.setString(3, membre.getPassword());
+		ordre.setString(1, membre.getPrenom());
+		ordre.setString(2, membre.getNom());
+		ordre.setString(3, membre.getMail());
+                ordre.setString(4, membre.getAdresse());
+		ordre.setString(5, membre.getCodePostal());
+		ordre.setString(6, membre.getVille());
+                ordre.setString(7, membre.getPassword());
+		ordre.setString(8, membre.getTelephone());
 		
 		ordre.execute();
 		
@@ -58,8 +66,12 @@ public class PersonneDao {
 		Statement ordre = connexion.createStatement();
 		ResultSet re = ordre.executeQuery(sql);
 		while (re.next()) {
-			Personne membre = new Personne(re.getString("nom"),
-					re.getString("mail"), re.getString("password"));
+			Personne membre = new Personne(re.getInt("idPersonne"),
+                                re.getString("prenom"), re.getString("nom"),
+                                re.getString("mail"), re.getString("adresse"),
+                                re.getString("codePostal"), re.getString("ville"),
+                                re.getString("telephone")
+                        );
 			result.add(membre);
 		}
 		

@@ -22,7 +22,7 @@ public class AmatDao {
 	  public static final int FOREIGN_KEY_NOT_FOUND = 1452;
 
 	  protected static final String DRIVER_NAME = "com.mysql.jdbc.Driver";
-	  protected static final String DB_NAME = "amatjavatest";
+	  protected static final String DB_NAME = "teamforma";
 	  protected static final String URL = "jdbc:mysql://localhost/" + DB_NAME;
 	  protected static final String USER = "root";
 	  protected static final String PASSWORD = "";
@@ -53,9 +53,9 @@ public class AmatDao {
 	    }
 	  }
 
-	  /** Fournit une connexion à la base de données.
-	   * Ne fait pas appel à un pool de connexion, mâme si cela est envisageable plus tard
-	   * (ne changerait rien à l'appel de la méthode)
+	  /** Fournit une connexion ï¿½ la base de donnï¿½es.
+	   * Ne fait pas appel ï¿½ un pool de connexion, mï¿½me si cela est envisageable plus tard
+	   * (ne changerait rien ï¿½ l'appel de la mï¿½thode)
 	   * @throws java.sql.SQLException
 	   */
 	  public static Connection getConnection() throws SQLException {
