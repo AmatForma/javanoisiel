@@ -31,7 +31,7 @@
 <body>
 	
 	<div class="nav-side-menu">
-            <div class="brand"><a href="connexion" ><h2>Accueil Genéral</h2></a></div>
+            <div class="brand"><a href="connexion" ><h2>Accueil Genéral Pré</h2></a></div>
             <i class="" data-toggle="collapse" ></i>
 
             <div class="menu-list">
