@@ -43,14 +43,14 @@ public class InscriptionServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		try {
 			
-			String prenom = request.getParameter("nom");
+			String prenom = request.getParameter("prenom");
 			String nom = request.getParameter("nom");
-			String mail = request.getParameter("nom");
-			String adresse = request.getParameter("nom");
-			String codePostal = request.getParameter("nom");
-			String ville = request.getParameter("mail");
+			String mail = request.getParameter("mail");
+			String adresse = request.getParameter("adresse");
+			String codePostal = request.getParameter("codePostal");
+			String ville = request.getParameter("ville");
 			String password = request.getParameter("password");
-			String telephone = request.getParameter("password");
+			String telephone = request.getParameter("telephone");
 			
 			Personne member = new Personne(prenom, nom, mail, adresse, codePostal, ville, password, telephone);
 			PersonneDao.insert(member);

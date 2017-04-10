@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.amat.bean.Personne;
 import fr.amat.dao.PersonneDao;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class MembreServlet
@@ -35,10 +36,22 @@ public class MembreServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		try {
+			HttpSession session = request.getSession(true);
+                        Personne membre = (Personne) session.getAttribute("membre");
+                        
+                        if (membre == null){
+                            request.setAttribute("loginFaux", "Vous devez vous connecter");
+                            request.getRequestDispatcher("index.jsp").forward(request, response);
+                        }
+                        
+                        else{
+                            List<Personne> membres = PersonneDao.getALL();
+                            request.setAttribute("membres", membres);
+                            request.getRequestDispatcher("/WEB-INF/membre.jsp").forward(request, response);
+                            
+                            
+                        }
 			
-			List<Personne> membres = PersonneDao.getALL();
-			request.setAttribute("membres", membres);
-			request.getRequestDispatcher("/WEB-INF/membre.jsp").forward(request, response);
 			
 		} catch (Exception e) {
 
