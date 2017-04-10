@@ -6,7 +6,9 @@
 package fr.amat.dao;
 
 import fr.amat.bean.Formation;
+import fr.amat.bean.Personne;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -26,7 +28,7 @@ public class FormationDao {
 		Statement ordre = connexion.createStatement();
 		ResultSet re1 = ordre.executeQuery(sql);
 		while (re1.next()) {
-Formation formation = new Formation(re1.getString("intitule"),re1.getString("description")) ;
+               Formation formation = new Formation(re1.getString("intitule"),re1.getString("description")) ;
 
                                                          
                                 
@@ -38,6 +40,44 @@ Formation formation = new Formation(re1.getString("intitule"),re1.getString("des
 		
 		return result;
 	}
+    
+    
+    
+    public static Formation insert(Formation formation) throws SQLException{
+		
+		
+		String sql = "INSERT INTO formation (intitule,description) VALUES (?, ?)";
+		Connection connexion = AmatDao.getConnection();
+		PreparedStatement ordre = connexion.prepareStatement(sql);
+		ordre.setString(1, formation.getIntitule());
+		ordre.setString(2, formation.getDescription());
+		
+		
+		ordre.execute();
+		
+		
+		return null;
+	}
+    
+    
+    
+        
+    public static Formation update(Formation formation) throws SQLException{
+		
+		
+		String sql = "UPDATE  formation SET intitule = ? , description = ?";
+		Connection connexion = AmatDao.getConnection();
+		PreparedStatement ordre = connexion.prepareStatement(sql);
+		ordre.setString(1, formation.getIntitule());
+		ordre.setString(2, formation.getDescription());
+		
+		
+		ordre.execute();
+		
+		
+		return null;
+	}
+    
     
     
     
