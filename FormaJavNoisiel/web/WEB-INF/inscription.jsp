@@ -76,27 +76,27 @@
                     </div>
                     <div class="form-group has-feedback">
                         <label class="sr-only" for="email2">Adresse Rue</label>
-                        <input type="email" class="form-control" id="email2" placeholder="Rue" name="adresse" required>
+                        <input type="text" class="form-control" id="email2" placeholder="Rue" name="adresse" required>
                         <i class="fa fa-map-marker form-control-feedback"></i>
                     </div>
                     <div class="form-group has-feedback">
                         <label class="sr-only" for="email2">Code Postal</label>
-                        <input type="email" class="form-control" id="email2" placeholder="Code Postal" name="codePostal" required>
+                        <input type="number" class="form-control" id="email2" placeholder="Code Postal" name="codePostal" required>
                         <i class="fa fa-map-marker form-control-feedback"></i>
                     </div>
                     <div class="form-group has-feedback">
                         <label class="sr-only" for="email2">Ville</label>
-                        <input type="email" class="form-control" id="email2" placeholder="Ville" name="ville" required>
+                        <input type="text" class="form-control" id="email2" placeholder="Ville" name="ville" required>
                         <i class="fa fa-map-marker form-control-feedback"></i>
                     </div>
                     <div class="form-group has-feedback">
                         <label class="sr-only" for="email2">Mot de passe</label>
-                        <input type="email" class="form-control" id="email2" placeholder="Mot de passe" name="password" required>
+                        <input type="password" class="form-control" id="email2" placeholder="Mot de passe" name="password" required>
                         <i class="fa fa-pencil form-control-feedback"></i>
                     </div>
                     <div class="form-group has-feedback">
                         <label class="sr-only" for="email2">Téléphone</label>
-                        <input type="email" class="form-control" id="email2" placeholder="Numéro de téléphone" name="telephone" required>
+                        <input type="tel" class="form-control" id="email2" placeholder="Numéro de téléphone" name="telephone" required>
                         <i class="fa fa-phone form-control-feedback"></i>
                     </div>
                     <input type="submit" value="Envoyer" class="btn btn-default">

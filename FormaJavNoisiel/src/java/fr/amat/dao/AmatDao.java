@@ -24,8 +24,8 @@ public class AmatDao {
 	  protected static final String DRIVER_NAME = "com.mysql.jdbc.Driver";
 	  protected static final String DB_NAME = "teamforma";
 	  protected static final String URL = "jdbc:mysql://localhost/" + DB_NAME;
-	  protected static final String USER = "root";
-	  protected static final String PASSWORD = "";
+	  protected static final String USER = "user_teamforma2017";
+	  protected static final String PASSWORD = "pwd_teamforma2017";
 
 	  public enum SortOrder {
 
