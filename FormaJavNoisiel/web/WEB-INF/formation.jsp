@@ -113,11 +113,11 @@
                         
                         
                         
-	
+	</div>
 <input class="btn btn-primary" type="submit" value="Ajouter Formation">
 <input class="btn btn-primary" type="submit" value="Refraichir">
-<input class="btn btn-primary" type="reset" value="Ajoueter Module">
-	</div>
+
+	
 	
                         
                         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
