@@ -6,6 +6,7 @@
 package fr.amat.servlets;
 
 import fr.amat.bean.Formation;
+import fr.amat.bean.Personne;
 import fr.amat.dao.FormationDao;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -64,11 +66,18 @@ public class formationServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 		
 		try {
-			
-			List<Formation> formations = FormationDao.fgetALL();
+			HttpSession session = request.getSession(true);
+                        Personne membre = (Personne) session.getAttribute("membre");
+                        Formation formation = (Formation)session.getAttribute("formations");
+                        if(membre == null){
+                            
+                            request.setAttribute("loginFaux", "Vous devez vous connecter");
+                            request.getRequestDispatcher("index.jsp").forward(request, response);
+                        }
+                        else {List<Formation> formations = FormationDao.fgetALL();
 			request.setAttribute("formations", formations);
 			request.getRequestDispatcher("/WEB-INF/formation.jsp").forward(request, response);
-			
+                        }
 		} catch (Exception e) {
 
 			request.setAttribute("msg", e.getMessage());
