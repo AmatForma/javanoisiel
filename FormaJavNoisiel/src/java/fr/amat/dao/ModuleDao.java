@@ -93,7 +93,7 @@ public class ModuleDao {
 		if (connection != null && !connection.isClosed()) {
 			statement = connection.prepareStatement("DELETE FROM module WHERE id =?");
 			statement.setInt(1, id);
-                        statement.executeQuery();
+                        statement.executeUpdate();
 		}
 	}    
 }
