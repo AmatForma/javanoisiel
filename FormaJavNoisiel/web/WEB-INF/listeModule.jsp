@@ -2,7 +2,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -19,7 +19,7 @@
 
 
                     <div class="col-md-12">
-                        <h2>Liste des personnes </h2>
+                        <h2>Liste des modules </h2>
                         <div class="table-responsive">
                             
                             <table id="mytable" class="table table-bordred table-striped">
@@ -36,7 +36,7 @@
                                             <td><input type="checkbox" class="checkthis" /></td>
                                             <td>${module.intitule}</td>
                                             <td>${module.description}</td>
-                                            <td>${module.nbJour}</td
+                                            <td>${module.nbJour}</td>
                                             <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
                                             <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                                         </tr>
@@ -53,7 +53,7 @@
                                 <li><a href="#">4</a></li>
                                 <li><a href="#">5</a></li>
                                 <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-                            </ul>
+                           </ul>
 
                         </div>
                     </div>
