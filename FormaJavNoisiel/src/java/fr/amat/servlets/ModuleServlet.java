@@ -10,7 +10,9 @@ import fr.amat.dao.ModuleDao;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -50,7 +52,9 @@ public class ModuleServlet extends HttpServlet {
 		try {
                         mDAO.ajouter(module);
 			listmodule = mDAO.afficher();
-			request.setAttribute("modules", listmodule);
+                        Set<Module> listemodule = new HashSet<Module>(listmodule);
+                        List<Module> list = new ArrayList<Module>(listemodule);
+			request.setAttribute("modules", list);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
