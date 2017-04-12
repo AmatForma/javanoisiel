@@ -5,13 +5,18 @@
  */
 package fr.amat.servlets;
 
+import fr.amat.bean.Personne;
+import fr.amat.bean.Session;
+import fr.amat.dao.SessionDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -72,8 +77,32 @@ public class SessionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-    }
+        PrintWriter out = response.getWriter();
+		
+		try {
+			HttpSession session = request.getSession(true);
+                        Personne membre = (Personne) session.getAttribute("membre");
+                        Session sessionf = (Session) session.getAttribute("sessionf");
+                        if (sessionf == null){
+                            request.setAttribute("loginFaux", "Vous devez vous connecter");
+                            request.getRequestDispatcher("index.jsp").forward(request, response);
+                        }
+                        
+                        else{
+                            List<Session> membres = SessionDao.getALL();
+                            request.setAttribute("session", sessionf);
+                            request.getRequestDispatcher("/WEB-INF/session.jsp").forward(request, response);
+                            
+                            
+                        }
+			
+			
+		} catch (Exception e) {
+
+			request.setAttribute("msg", e.getMessage());
+			out.println(e.getMessage());
+		}
+	}
 
     /**
      * Returns a short description of the servlet.
