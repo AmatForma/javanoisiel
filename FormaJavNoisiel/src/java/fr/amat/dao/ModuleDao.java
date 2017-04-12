@@ -95,6 +95,5 @@ public class ModuleDao {
 			statement.setInt(1, id);
                         statement.executeQuery();
 		}
-	}
-    
+	}    
 }
