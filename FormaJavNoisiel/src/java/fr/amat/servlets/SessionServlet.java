@@ -5,25 +5,20 @@
  */
 package fr.amat.servlets;
 
-import fr.amat.bean.Formation;
-import fr.amat.bean.Personne;
-import fr.amat.dao.FormationDao;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author walid
+ * @author MHADJIRI
  */
-@WebServlet(name = "formationServlet", urlPatterns = {"/formationServlet"})
-public class formationServlet extends HttpServlet {
+@WebServlet(name = "SessionServlet", urlPatterns = {"/SessionServlet"})
+public class SessionServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +37,10 @@ public class formationServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet formationServlet</title>");            
+            out.println("<title>Servlet SessionServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet formationServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet SessionServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,26 +58,7 @@ public class formationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
-		
-		try {
-			HttpSession session = request.getSession(true);
-                        Personne membre = (Personne) session.getAttribute("membre");
-                        Formation formation = (Formation)session.getAttribute("formations");
-                        if(membre == null){
-                            
-                            request.setAttribute("loginFaux", "Vous devez vous connecter");
-                            request.getRequestDispatcher("index.jsp").forward(request, response);
-                        }
-                        else {List<Formation> formations = FormationDao.fgetALL();
-			request.setAttribute("formations", formations);
-			request.getRequestDispatcher("/WEB-INF/formation.jsp").forward(request, response);
-                        }
-		} catch (Exception e) {
-
-			request.setAttribute("msg", e.getMessage());
-			out.println(e.getMessage());
-		}
+        processRequest(request, response);
     }
 
     /**

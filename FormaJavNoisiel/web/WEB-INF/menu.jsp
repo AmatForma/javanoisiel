@@ -38,7 +38,7 @@
 
                 <ul id="menu-content" class="">
                     <li data-toggle="collapse" class="collapsed active">
-                        <a href="#"><i class=""></i> Acceuil <span class="arrow"></span></a>
+                        <a href="#"><i class=""></i> Accueil <span class="arrow"></span></a>
                     </li>
 
                     <li >
