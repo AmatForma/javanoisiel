@@ -11,12 +11,23 @@ package fr.amat.bean;
  */
 public class Module {
     
-  private String intitule;
+        private int id;
+        private String intitule;
 	private String description;
 	private int nbJour;
 
 	public Module() {
 	}
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+        
+        
 
 	public String getIntitule() {
 		return intitule;
