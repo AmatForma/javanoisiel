@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package fr.amat.servlets;
 
 import fr.amat.bean.Module;
@@ -25,12 +21,15 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ModuleServlet", urlPatterns = {"/module"})
 public class ModuleServlet extends HttpServlet {
-
+         List<Module> listmodule = null;
+         Module module = null;
+         ModuleDao mDAO = null;
    
    
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("/WEB-INF/module.jsp").forward(request, response);
+        return;
     }
 
    
@@ -38,17 +37,71 @@ public class ModuleServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-                List<Module> listmodule = new ArrayList<Module>();
+         listmodule = new ArrayList<Module>();
+         module = new Module();
+         mDAO = new ModuleDao();  
+            
+            String action = request.getParameter("action");
+            if(action != null){
+                if(action.equals("delete")){
+                    supprimerModule(request, response);
+                }else if(action.equals("edit")){
+                    editerModule(request, response);
+                }else if(action.equals("lister")){
+                    listerModule(request, response);
+                }
+            }
+    }     
+        
+                
+    
+    public void supprimerModule(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+                String intitule = request.getParameter("intitule").trim().toLowerCase();
+		String description = request.getParameter("description").trim().toLowerCase();
+                int nbjour = Integer.valueOf(request.getParameter("nbJour").trim().toLowerCase());
                 Module module = new Module();
+                module.setDescription(description);
+                module.setIntitule(intitule);
+                module.setNbJour(nbjour);
+                
+		mDAO = new ModuleDao();
+		try {
+                        mDAO.deleteById(module.getId());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    
+    public void editerModule(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+        String intitule = request.getParameter("intitule").trim().toLowerCase();
+		String description = request.getParameter("description").trim().toLowerCase();
+                int nbjour = Integer.valueOf(request.getParameter("nbJour").trim().toLowerCase());
+                Module module = new Module();
+                module.setDescription(description);
+                module.setIntitule(intitule);
+                module.setNbJour(nbjour);
+                
+		ModuleDao mDAO = new ModuleDao();
+		try {
+                        mDAO.modifier(module);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    public void listerModule(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
                 String intitule = request.getParameter("intitule").trim().toLowerCase();
 		String description = request.getParameter("description").trim().toLowerCase();
                 int nbjour = Integer.valueOf(request.getParameter("nbJour").trim().toLowerCase());
                 module.setDescription(description);
                 module.setIntitule(intitule);
                 module.setNbJour(nbjour);
-
-
-		ModuleDao mDAO = new ModuleDao();
+                   
+                mDAO = new ModuleDao();
+                
 		try {
                         mDAO.ajouter(module);
 			listmodule = mDAO.afficher();
@@ -60,24 +113,6 @@ public class ModuleServlet extends HttpServlet {
 			e.printStackTrace();
 		}
                  request.getRequestDispatcher("/WEB-INF/listeModule.jsp").forward(request, response);
-        
-    }
-    
-    public void supprimerModule(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-                String intitule = request.getParameter("intitule").trim().toLowerCase();
-		String description = request.getParameter("description").trim().toLowerCase();
-                int nbjour = Integer.valueOf(request.getParameter("nbJour").trim().toLowerCase());
-                Module module = new Module();
-                module.setDescription(description);
-                module.setIntitule(intitule);
-                module.setNbJour(nbjour);
-                
-		ModuleDao mDAO = new ModuleDao();
-		try {
-                        mDAO.deleteById(module.getId());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
+                 return;
+    }   
 }
