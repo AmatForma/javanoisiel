@@ -103,8 +103,10 @@
 
                         </div>
                         <div class="modal-footer ">
-                            <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Oui</button>
+                            <form action="supprimer" method="post">  
+                                <button type="button" class="btn btn-success" onclick="goToInfo()"><span class="glyphicon glyphicon-ok-sign"></span> Oui</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Non</button>
+                            </form>
                         </div>
                     </div>
                     <!-- /.modal-content --> 

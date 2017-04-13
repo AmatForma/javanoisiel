@@ -80,6 +80,18 @@ public class FormationDao {
     
     
     
+        public void deleteformById(int id) throws SQLException {
+		PreparedStatement statement = null;
+		Connection connection = AmatDao.getConnection();
+		if (connection != null && !connection.isClosed()) {
+			statement = connection.prepareStatement("DELETE FROM formation WHERE id =?");
+			statement.setInt(1, id);
+                        statement.executeUpdate();
+		}
+	}
+    
+    
+    
     
     
 }
