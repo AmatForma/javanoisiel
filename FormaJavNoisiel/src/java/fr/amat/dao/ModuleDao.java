@@ -77,23 +77,52 @@ public class ModuleDao {
 		PreparedStatement statement = null;
 		Connection connection = AmatDao.getConnection();
 		if (connection != null && !connection.isClosed()) {
+                    try{
 			statement = connection.prepareStatement("UPDATE module SET intitule=?,  description=?, nbJour=?");
 			statement.setString(1, module.getIntitule());
 			statement.setString(2, module.getDescription());
                         statement.setInt(3, module.getNbJour());
 			statement.executeUpdate();
+                        } catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				if (statement != null) {
+					try {
+						statement.close();
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}
 		} else {
 			AmatDao.getConnection();
 		}
+		
 	}
         
         public void deleteById(int id) throws SQLException {
 		PreparedStatement statement = null;
 		Connection connection = AmatDao.getConnection();
 		if (connection != null && !connection.isClosed()) {
+                    try{
 			statement = connection.prepareStatement("DELETE FROM module WHERE id =?");
 			statement.setInt(1, id);
                         statement.executeUpdate();
+                        } catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				if (statement != null) {
+					try {
+						statement.close();
+
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		} else {
+			AmatDao.getConnection();
 		}
 	}    
 }
