@@ -76,34 +76,34 @@ public class SupprimerFormationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-		try {
-			
-			int id  = 
-			
-			
-			
-			Formation formation = new Formation(intitule, description);
-			                 FormationDao.insert(formation);
-                                         
-                                         
-                                         
-                                         List<Formation> formations = FormationDao.fgetALL();
-                                         request.setAttribute("formations", formations);
-			 
-			request.setAttribute("formation", formation);
-                        
-                        
-                       
-			
-			request.getRequestDispatcher("/WEB-INF/formation.jsp").forward(request, response);
-			
-			
-			
-		} catch (Exception e) {
-			
-			request.setAttribute("msg", e.getMessage());
-			out.println(e.getMessage());
-		}
+//		try {
+//			
+//			int id  = 
+//			
+//			
+//			
+//			Formation formation = new Formation(intitule, description);
+//			                FormationDao.insert(formation);
+//                                         
+//                                         
+//                                         
+//                                         List<Formation> formations = FormationDao.fgetALL();
+//                                         request.setAttribute("formations", formations);
+//			 
+//			request.setAttribute("formation", formation);
+//                        
+//                        
+//                       
+//			
+//			request.getRequestDispatcher("/WEB-INF/formation.jsp").forward(request, response);
+//			
+//			
+//			
+//		} catch (Exception e) {
+//			
+//			request.setAttribute("msg", e.getMessage());
+//			out.println(e.getMessage());
+//		}
        
     }
 
