@@ -11,6 +11,8 @@ import fr.amat.dao.FormationDao;
 import fr.amat.dao.PersonneDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -85,10 +87,18 @@ public class AjoutFormationServlet extends HttpServlet {
 			
 			Formation formation = new Formation(intitule, description);
 			                 FormationDao.insert(formation);
-			
+                                         
+                                         
+                                         
+                                         List<Formation> formations = FormationDao.fgetALL();
+                                         request.setAttribute("formations", formations);
+			 
 			request.setAttribute("formation", formation);
+                        
+                        
+                       
 			
-			request.getRequestDispatcher("/formation.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/formation.jsp").forward(request, response);
 			
 			
 			
