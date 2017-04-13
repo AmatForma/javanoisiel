@@ -17,11 +17,12 @@ public class Evaluation {
     private Date dateEffet;
     private String commentaire ;
 
-    public Evaluation(int idEvaluation, int idModule, int idSession, Date dateEffet) {
+    public Evaluation(int idEvaluation, int idModule, int idSession, Date dateEffet,String Commentaire) {
         this.idEvaluation = idEvaluation;
         this.idModule = idModule;
         this.idSession = idSession;
         this.dateEffet = dateEffet;
+        this.commentaire= Commentaire;
     }
 
     public int getIdEvaluation() {

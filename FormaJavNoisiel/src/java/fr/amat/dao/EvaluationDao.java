@@ -25,7 +25,7 @@ public class EvaluationDao {
 		Statement ordre = connexion.createStatement();
 		ResultSet re1 = ordre.executeQuery(sql);
 		while (re1.next()) {
-               Evaluation evaluation = new Evaluation(re1.getString("dateEffet")) ;
+               Evaluation evaluation = new Evaluation(re1.getInt("IdEvaluation"),re1.getInt("IdModule"),re1.getInt("IdSession"),re1.getDate("dateEffet"),re1.getString("Commentaire")); ;
 
                                                          
                                 
@@ -39,8 +39,8 @@ public class EvaluationDao {
 	}
     
     
-
-public class PersonneDao {
+/*
+public class EvaluationDao {
 	
 	public static Personne getByLoginPassword(String login, String password) throws SQLException{
 		Personne res = null;
@@ -68,7 +68,7 @@ public class PersonneDao {
 	
 	
     
-   /* public static Formation insert(Formation formation) throws SQLException{
+   public static Formation insert(Formation formation) throws SQLException{
 		
 		
 		String sql = "INSERT INTO formation (intitule,description) VALUES (?, ?)";
