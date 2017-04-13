@@ -58,7 +58,7 @@
 
         <div class="col-sm-6">
             <div class="footer-content">
-                <form action="formation" method="post" role="form" id="footer-form">
+                <form action="ajouter" method="post" role="form" id="footer-form">
                     <div class="form-group has-feedback">
                         <label class="sr-only" for="name1">Intitule </label>
                         <input type="text" class="form-control" id="name1" placeholder="intitule" name="intitule" required>
