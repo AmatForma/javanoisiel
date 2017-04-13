@@ -66,8 +66,8 @@
                     </li>
 
                     <li>
-                        <a href="#">
-                            <i class=""></i> Candidature
+                        <a href="candidater">
+                            <i class=""></i> Candidater
                         </a>
                     </li>
                     
