@@ -60,13 +60,13 @@ public class SessionDao {
         ResultSet res = ordre.executeQuery(sql);
         while (res.next()) {
             
-              Session sessionf = new Session(res.getInt("idSession"),
-                                res.getDate("dateDebut"), res.getDate("dateFin"),
-                                res.getInt("nbPlace") );
+            Session s = new Session(res.getInt("idSession"), 
+                    res.getInt("idFormation"), 
+                    res.getDate("dateDebut"), 
+                    res.getDate("dateFin"), 
+                    res.getInt("nbPlace"));
                    
-                    
-                       
-			resultat.add(sessionf);
+			resultat.add(s);
 		}
 
 		
