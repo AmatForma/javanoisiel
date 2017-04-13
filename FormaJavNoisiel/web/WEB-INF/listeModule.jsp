@@ -7,12 +7,21 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Insert title here</title>
+        
+        <script type="text/javascript">
+                function confirmer(url) {
+                        var rep = confirm("Etes vous sûre de  vouloir supprimer ?");
+                        if (rep == true) {
+                                document.location = url;
+                        }
+                }
+        </script>
     </head>
     <body>
 
         <%@include file="menu.jsp" %>
 
-        <div class="corps">
+        <div class="corps" >
 
             <div class="container">
                 <div class="row">
@@ -38,13 +47,13 @@
                                             <td>${module.description}</td>
                                             <td>${module.nbJour}</td>
                                             <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete" ><button onclick="location.href='javascript:confirmer('/module?action=delete'/)'" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
                             </table>
 
-                           <div class="clearfix"></div>
+<!--                           <div class="clearfix"></div>
                             <ul class="pagination pull-right">
                                 <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
                                 <li class="active"><a href="#">1</a></li>
@@ -53,7 +62,7 @@
                                 <li><a href="#">4</a></li>
                                 <li><a href="#">5</a></li>
                                 <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-                           </ul>
+                           </ul>-->
 
                         </div>
                     </div>
@@ -80,13 +89,13 @@
                             
                             <div class="form-group">
 
-                                <input class="form-control " type="text" name="nbJour" placeholder="nbJour">
+                                <input class="form-control " type="text" name="nbJour" placeholder="nombre de jour">
                             </div>
                             
                            
                         </div>
                         <div class="modal-footer ">
-                            <button type="button" class="btn btn-default btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Modifier</button>
+                            <button type="button" class="btn btn-default btn-lg" action="modifier" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Modifier</button>
                         </div>
                     </div>
                     <!-- /.modal-content --> 
@@ -96,7 +105,7 @@
 
 
 
-            <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+<!--            <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -109,18 +118,18 @@
 
                         </div>
                         <div class="modal-footer ">
-                            <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Oui</button>
+                            <button type="button" class="btn btn-success" action="delete"><span class="glyphicon glyphicon-ok-sign"></span> Oui</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Non</button>
                         </div>
                     </div>
-                    <!-- /.modal-content --> 
+                     /.modal-content  
                 </div>
-                <!-- /.modal-dialog --> 
-            </div>
+                 /.modal-dialog  
+            </div>-->
 
 
         </div>
-
+       
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="ressource/js/ap.js"></script>
