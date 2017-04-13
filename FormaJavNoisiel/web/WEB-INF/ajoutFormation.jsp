@@ -58,15 +58,15 @@
 
         <div class="col-sm-6">
             <div class="footer-content">
-                <form action="inscription" method="post" role="form" id="footer-form">
+                <form action="formation" method="post" role="form" id="footer-form">
                     <div class="form-group has-feedback">
-                        <label class="sr-only" for="name2">Intitule </label>
-                        <input type="text" class="form-control" id="name2" placeholder="Intitule" name="intitule" required>
+                        <label class="sr-only" for="name1">Intitule </label>
+                        <input type="text" class="form-control" id="name1" placeholder="intitule" name="intitule" required>
                         <i class="fa fa-user form-control-feedback"></i>
                     </div>
                     <div class="form-group has-feedback">
                         <label class="sr-only" for="name2">Description</label>
-                        <input type="text" class="form-control" id="name2" placeholder="Description" name="description" required>
+                        <input type="text" class="form-control" id="name2" placeholder="description" name="description" required>
                         <i class="fa fa-user form-control-feedback"></i>
                     </div>
                    
