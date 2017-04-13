@@ -13,12 +13,20 @@ public class Candidature {
         
     }
     
+    public Candidature(int idPersonne, int idSession, int idEtatCandidature) {
+        this.idPersonne = idPersonne;
+        this.idSession = idSession;
+        this.idEtatCandidature = idEtatCandidature;
+    }
+
     public Candidature(int idPersonne, int idSession, int idEtatCandidature, Date dateCandidature) {
         this.idPersonne = idPersonne;
         this.idSession = idSession;
         this.idEtatCandidature = idEtatCandidature;
         this.dateCandidature = dateCandidature;
     }
+    
+    
 
     public int getIdPersonne() {
         return idPersonne;

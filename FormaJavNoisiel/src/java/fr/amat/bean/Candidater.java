@@ -8,17 +8,27 @@ public class Candidater {
     private String description;
     private Date dateDebut;
     private Date dateFin;
-    
-    public Candidater (){
-        
+    private int idSession;
+
+    public Candidater() {
+
     }
-    
-    public Candidater(String intitule, String description, Date dateDebut, Date dateFin) {
-        this.intitule        = intitule;
-        this.description     = description;
-        this.dateDebut       = dateDebut;
-        this.dateFin         = dateFin;
-    }   
+
+    public Candidater(String intitule, String description, Date dateDebut, Date dateFin, int idSession) {
+        this.intitule = intitule;
+        this.description = description;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.idSession = idSession;
+    }
+
+    public void setIdSession(int idSession) {
+        this.idSession = idSession;
+    }
+
+    public int getIdSession() {
+        return idSession;
+    }
 
     public String getIntitule() {
         return intitule;
@@ -51,6 +61,5 @@ public class Candidater {
     public void setDateFin(Date dateFin) {
         this.dateFin = dateFin;
     }
-    
-    
+
 }

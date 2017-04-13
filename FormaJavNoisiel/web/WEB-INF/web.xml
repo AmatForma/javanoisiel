@@ -44,4 +44,16 @@
         <servlet-name>AjoutFormationServlet</servlet-name>
         <url-pattern>/ajouter</url-pattern>
     </servlet-mapping>
+    
+    
+     <servlet>
+        <servlet-name>CandidaterServlet</servlet-name>
+        <servlet-class>fr.amat.servlets.CandidaterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CandidaterServlet</servlet-name>
+        <url-pattern>/candidater</url-pattern>
+    </servlet-mapping>
+    
+   
 </web-app>

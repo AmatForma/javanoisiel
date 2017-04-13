@@ -18,7 +18,7 @@ public class CandidaterDao {
 		
 		List<Candidater> result = new ArrayList<Candidater>();
 		Connection connexion = AmatDao.getConnection();
-                String sql = "SELECT f.intitule, f.description, s.dateDebut, s.dateFin\n" +
+                String sql = "SELECT f.intitule, f.description, s.dateDebut, s.dateFin, s.idSession\n" +
                              "FROM formation f\n" +
                                     "INNER JOIN session s\n" +
                                 "ON s.idFormation = f.idFormation\n" +
@@ -27,7 +27,8 @@ public class CandidaterDao {
 		ResultSet re = ordre.executeQuery(sql);
 		while (re.next()) {
 			Candidater candidat = new Candidater(re.getString("intitule"),
-                                re.getString("description"), re.getDate("dateDebut"), re.getDate("dateFin")
+                                re.getString("description"), re.getDate("dateDebut"), re.getDate("dateFin"),
+                                re.getInt("idSession")
                         );
 			result.add(candidat);
 		}
@@ -41,13 +42,12 @@ public class CandidaterDao {
 	public static Candidater insert(Candidature candidature) throws SQLException{
 		
 		
-		String sql = "INSERT INTO candidature (idpersonne, idSession, idEtatCandidature, dateCandidature) VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO candidature (idpersonne, idSession, idEtatCandidature) VALUES (?, ?, ?)";
 		Connection connexion = AmatDao.getConnection();
 		PreparedStatement ordre = connexion.prepareStatement(sql);
 		ordre.setInt(1, candidature.getIdPersonne());
 		ordre.setInt(2, candidature.getIdSession());
 		ordre.setInt(3, candidature.getIdEtatCandidature());
-                ordre.setDate(4, (Date) candidature.getDateCandidature());
 		
 		ordre.execute();
 		
