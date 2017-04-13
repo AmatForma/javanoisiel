@@ -33,4 +33,15 @@
         <servlet-name>formationServlet</servlet-name>
         <url-pattern>/formation</url-pattern>
     </servlet-mapping>
+    
+    
+    
+    <servlet>
+        <servlet-name>AjoutFormationServlet</servlet-name>
+        <servlet-class>fr.amat.servlets.AjoutFormationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AjoutFormationServlet</servlet-name>
+        <url-pattern>/ajouter</url-pattern>
+    </servlet-mapping>
 </web-app>
