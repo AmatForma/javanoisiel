@@ -57,11 +57,22 @@ public class SessionDao {
         Connection connexion = AmatDao.getConnection();
         String sql = "SELECT * FROM Session";
         Statement ordre = connexion.createStatement();
-        ResultSet re = ordre.executeQuery(sql);
-        while (re.next()) {
-        }
+        ResultSet res = ordre.executeQuery(sql);
+        while (res.next()) {
+            
+              Session sessionf = new Session(res.getInt("idSession"),
+                                res.getDate("dateDebut"), res.getDate("dateFin"),
+                                res.getInt("nbPlace") );
+                   
+                    
+                       
+			resultat.add(sessionf);
+		}
+
+		
+		return resultat;
         
-        return null;  
+         
 }
 }
 
