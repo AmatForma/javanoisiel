@@ -1,15 +1,12 @@
-<!-- 
-    Document   : session.jsp
-    Created on : 6 avr. 2017, 11:19:10
-    Author     : MHADJIRI-->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title> page Session</title>
+        <title> Page Session</title>
     </head>
     <body>
         <%@ include file="menu.jsp" %>
@@ -38,7 +35,5 @@
 	</table>
 	
 	</div>
-	
-   
     </body>
 </html>

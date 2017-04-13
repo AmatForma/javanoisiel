@@ -5,25 +5,24 @@
  */
 package fr.amat.servlets;
 
+import fr.amat.bean.Formation;
 import fr.amat.bean.Personne;
-import fr.amat.bean.Session;
-import fr.amat.dao.SessionDao;
+import fr.amat.dao.FormationDao;
+import fr.amat.dao.PersonneDao;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author MHADJIRI
+ * @author walid
  */
-@WebServlet(name = "SessionServlet", urlPatterns = {"/SessionServlet"})
-public class SessionServlet extends HttpServlet {
+@WebServlet(name = "AjoutFormation", urlPatterns = {"/AjoutFormation"})
+public class AjoutFormationServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +41,10 @@ public class SessionServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SessionServlet</title>");            
+            out.println("<title>Servlet AjoutFormation</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SessionServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AjoutFormation at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,7 +62,7 @@ public class SessionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+      request.getRequestDispatcher("/WEB-INF/ajoutFormation.jsp").forward(request, response);
     }
 
     /**
@@ -77,32 +76,28 @@ public class SessionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
-		
+     PrintWriter out = response.getWriter();
 		try {
-			HttpSession session = request.getSession(true);
-                        Personne membre = (Personne) session.getAttribute("membre");
-                        Session sessionf = (Session) session.getAttribute("sessionf");
-                        if (sessionf == null){
-                            request.setAttribute("loginFaux", "Vous devez vous connecter");
-                            request.getRequestDispatcher("index.jsp").forward(request, response);
-                        }
-                        
-                        else{
-                            List<Session> membres = SessionDao.getALL();
-                            request.setAttribute("session", sessionf);
-                            request.getRequestDispatcher("/WEB-INF/session.jsp").forward(request, response);
-                            
-                            
-                        }
+			
+			String intitule = request.getParameter("intitule");
+			String description = request.getParameter("description");
+			
+			
+			Formation formation = new Formation(intitule, description);
+			                 FormationDao.insert(formation);
+			
+			request.setAttribute("formation", formation);
+			
+			request.getRequestDispatcher("/formation.jsp").forward(request, response);
+			
 			
 			
 		} catch (Exception e) {
-
+			
 			request.setAttribute("msg", e.getMessage());
 			out.println(e.getMessage());
 		}
-	}
+    }
 
     /**
      * Returns a short description of the servlet.

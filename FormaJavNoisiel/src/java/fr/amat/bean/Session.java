@@ -60,11 +60,12 @@ public class Session {
     }
 
     
-    public Session(int idSession, int idFormation, Date dateDebut, Date dateFin) {
+    public Session(int idSession, int idFormation, Date dateDebut, Date dateFin, int nbPlace) {
         this.idSession = idSession;
         this.idFormation = idFormation;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
+        this.nbPlace = nbPlace;
     }
 }
     
