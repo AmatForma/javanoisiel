@@ -75,7 +75,7 @@ public class ModuleServlet extends HttpServlet {
     
     
     public void editerModule(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-        String intitule = request.getParameter("intitule").trim().toLowerCase();
+                String intitule = request.getParameter("intitule").trim().toLowerCase();
 		String description = request.getParameter("description").trim().toLowerCase();
                 int nbjour = Integer.valueOf(request.getParameter("nbJour").trim().toLowerCase());
                 Module module = new Module();
