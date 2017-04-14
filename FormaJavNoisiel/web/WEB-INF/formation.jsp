@@ -31,7 +31,7 @@
                     <tr>
                         <td>${formations.intitule}</td>
                         <td>${formations.description}</td>
-                        <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" onclick=""><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" onclick=""><span class="glyphicon glyphicon-pencil"></span></button></p></td>
                         <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
 
                     </tr>
@@ -103,8 +103,8 @@
 
                         </div>
                         <div class="modal-footer ">
-                            <form action="supprimer" method="post">  
-                                <button type="button" class="btn btn-success" onclick="goToInfo()"><span class="glyphicon glyphicon-ok-sign"></span> Oui</button>
+                            <form action="supprimer" method="get" >  
+                                <button type="button" class="btn btn-success" onclick=""><span class="glyphicon glyphicon-ok-sign"></span> Oui</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Non</button>
                             </form>
                         </div>
@@ -116,8 +116,10 @@
 
 
             </div>
+            <form action="ajouter" method="get">
             <input    class="btn btn-primary" type="submit" value="Ajouter Formation" onclick="goToInfo()" />
             <input class="btn btn-primary" type="submit" value="Refraichir"/>
+            </form>
 
 <script type="text/javascript">
         function goToInfo(){
