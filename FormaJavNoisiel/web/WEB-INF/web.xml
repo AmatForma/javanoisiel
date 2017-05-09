@@ -50,21 +50,13 @@
     </servlet-mapping>
     
     
-    <servlet>
+     <servlet>
         <servlet-name>CandidaterServlet</servlet-name>
         <servlet-class>fr.amat.servlets.CandidaterServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CandidaterServlet</servlet-name>
         <url-pattern>/candidater</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>CandidatureServlet</servlet-name>
-        <servlet-class>fr.amat.servlets.CandidatureServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>CandidatureServlet</servlet-name>
-        <url-pattern>/candidature</url-pattern>
     </servlet-mapping>
     
    
