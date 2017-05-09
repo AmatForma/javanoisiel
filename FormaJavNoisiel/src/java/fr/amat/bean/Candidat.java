@@ -10,11 +10,23 @@ public class Candidat {
     private Date dateFin;
     private String intitule;
     private Date dateCandidature;
+    private int idSession;
 
     public Candidat (){
         
     }
     
+    public Candidat(String nom, String prenom, String description, Date dateDebut, Date dateFin, String intitule, Date dateCandidature, int idSession) {
+        this.nom             = nom;
+        this.prenom          = prenom;
+        this.description     = description;
+        this.dateDebut       = dateDebut;
+        this.dateFin         = dateFin;
+        this.intitule        = intitule;
+        this.dateCandidature = dateCandidature;
+        this.idSession       = idSession;
+    }
+
     public Candidat(String nom, String prenom, String description, Date dateDebut, Date dateFin, String intitule, Date dateCandidature) {
         this.nom             = nom;
         this.prenom          = prenom;
@@ -53,6 +65,10 @@ public class Candidat {
         return dateCandidature;
     }
 
+    public int getIdSession() {
+        return idSession;
+    }
+
     public void setNom(String nom) {
         this.nom = nom;
     }
@@ -81,4 +97,10 @@ public class Candidat {
         this.dateCandidature = dateCandidature;
     }
 
+    public void setIdSession(int idSession) {
+        this.idSession = idSession;
+    }
+
+    
+    
 }
