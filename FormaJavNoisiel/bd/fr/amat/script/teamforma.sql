@@ -161,7 +161,7 @@ CREATE TABLE IF NOT EXISTS `TeamForma`.`Candidature` (
   `idPersonne` INT NOT NULL,
   `idSession` INT NOT NULL,
   `idEtatCandidature` INT NOT NULL,
-  `dateCandidature` DATE NOT NULL,
+  `dateCandidature` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idPersonne`, `idSession`),
   INDEX `fk_Session2_idx` (`idSession` ASC),
   INDEX `fk_Personne2_idx` (`idPersonne` ASC),
