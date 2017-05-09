@@ -92,20 +92,28 @@ public class CandidatureServlet extends HttpServlet {
 
  
         try {
-                    
             int idPersonne = membre.getIdPersonne();
             int idSession = Integer.parseInt(request.getParameter("idSession"));
             int idEtatCandidature = 1;
-//            String intitule = request.getParameter("intitile");
+            String intituleA = request.getParameter("Accepter");
+            String intituleB = request.getParameter("Refuser");
+            
+            if(intituleA.equals("accepter")){
+                idEtatCandidature = 1;
+            }
+            else{
+                idEtatCandidature = 2;
+            }
+
 //            if (intitule == "Accepter") {
 //                idEtatCandidature = 1;
 //            } 
 
-String action = request.getParameter("name");
-out.println(action);
-if (        "Refuser".equals(action)) {
-    idEtatCandidature = 2;
-}
+//String action = request.getParameter("name");
+//out.println(action);
+//if (        "Refuser".equals(action)) {
+//    idEtatCandidature = 2;
+//}
             Candidature candidature = new Candidature(idPersonne, idSession, idEtatCandidature);
             CandidatureDao.update(candidature);
 

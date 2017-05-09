@@ -59,8 +59,8 @@
                                             <td>${candidat.idSession}</td>
 
                                             <td><input type="hidden" name="idSession" value="${candidat.idSession}"></td>
-                                            <td> <button type="submit"  name="Accepter" value="%=Accepter%" key="button.btn-success" class="btn btn-success"><span class="glyphicon glyphicon-ok-sign"></span>Accepter</button></td>
-                                            <td> <button type="submit"  name="Refuser" value="%=Refuser%"   key="button.btn-warning" class="btn btn-warning"><span class="glyphicon glyphicon-remove-sign"></span>Refuser</button></td>
+                                            <td> <button type="submit"  name="Accepter" value="accepter" key="button.btn-success" class="btn btn-success"><span class="glyphicon glyphicon-ok-sign"></span>Accepter</button></td>
+                                            <td> <button type="submit"  name="Accepter" value="refuser"   key="button.btn-warning" class="btn btn-warning"><span class="glyphicon glyphicon-remove-sign"></span>Refuser</button></td>
 <!--                                            <td><p data-placement="top" data-toggle="tooltip" title="Accepter"><button class="btn btn-success btn-xs" data-title="Accepter" data-toggle="modal" data-target="#accepter" ><span class="glyphicon glyphicon-ok-sign"></span></button></p></td>-->
 <!--                                            <td><p data-placement="top" data-toggle="tooltip" title="Refuser"><button class="btn btn-warning btn-xs" data-title="Refuser" data-toggle="modal" data-target="#refuser" ><span class="glyphicon glyphicon-remove-sign"></span></button></p></td>-->
                                         
