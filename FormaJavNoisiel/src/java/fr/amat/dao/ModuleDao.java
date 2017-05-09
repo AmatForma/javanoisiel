@@ -52,7 +52,7 @@ public class ModuleDao {
 		}
 	}
 	
-	public  List<Module> afficher() throws SQLException {
+	public  List<Module> lister() throws SQLException {
 		Connection connection = AmatDao.getConnection();
 		PreparedStatement statement = connection.prepareStatement("SELECT * FROM module");
 		ResultSet resultat = statement.executeQuery();

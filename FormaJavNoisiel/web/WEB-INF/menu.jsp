@@ -48,7 +48,7 @@
                     </li>
 
                     <li>
-                        <a href="#">
+                        <a href="module">
                             <i class=""></i> Modules
                         </a>
                     </li>

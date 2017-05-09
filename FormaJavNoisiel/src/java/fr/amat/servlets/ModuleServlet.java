@@ -28,7 +28,8 @@ public class ModuleServlet extends HttpServlet {
    
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/module.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/module.jsp").forward(request, response);
+        
         return;
     }
 
@@ -41,7 +42,8 @@ public class ModuleServlet extends HttpServlet {
          module = new Module();
          mDAO = new ModuleDao();  
             
-            String action = request.getParameter("action");
+            //String action = request.getParameter("action");
+           String action ="delete";
             if(action != null){
                 if(action.equals("delete")){
                     supprimerModule(request, response);
@@ -71,6 +73,7 @@ public class ModuleServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+                listerModule(request, response);
     }
     
     
@@ -99,12 +102,11 @@ public class ModuleServlet extends HttpServlet {
                 module.setDescription(description);
                 module.setIntitule(intitule);
                 module.setNbJour(nbjour);
-                   
                 mDAO = new ModuleDao();
                 
 		try {
                         mDAO.ajouter(module);
-			listmodule = mDAO.afficher();
+			listmodule = mDAO.lister();
                         Set<Module> listemodule = new HashSet<Module>(listmodule);
                         List<Module> list = new ArrayList<Module>(listemodule);
 			request.setAttribute("modules", list);
