@@ -70,6 +70,11 @@
                             <i class=""></i> Candidater
                         </a>
                     </li>
+                    <li>
+                        <a href="candidature">
+                            <i class=""></i> Candidatures à valider
+                        </a>
+                    </li>
                     
                     <li>
                         <a href="#">
