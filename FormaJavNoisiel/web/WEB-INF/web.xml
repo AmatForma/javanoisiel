@@ -28,6 +28,10 @@
         <servlet-name>MembreServlet</servlet-name>
         <url-pattern>/membre</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModuleServlet</servlet-name>
+        <url-pattern>/module</url-pattern>
+    </servlet-mapping>
     
     <servlet-mapping>
         <servlet-name>formationServlet</servlet-name>
