@@ -9,7 +9,9 @@ import fr.amat.bean.Formation;
 import fr.amat.dao.FormationDao;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -75,46 +77,38 @@ public class SupprimerFormationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
-//		try {
-//			
-//			int id  = 
-//			
-//			
-//			
-//			Formation formation = new Formation(intitule, description);
-//			                FormationDao.insert(formation);
-//                                         
-//                                         
-//                                         
-//                                         List<Formation> formations = FormationDao.fgetALL();
-//                                         request.setAttribute("formations", formations);
-//			 
-//			request.setAttribute("formation", formation);
-//                        
-//                        
-//                       
-//			
-//			request.getRequestDispatcher("/WEB-INF/formation.jsp").forward(request, response);
-//			
-//			
-//			
-//		} catch (Exception e) {
-//			
-//			request.setAttribute("msg", e.getMessage());
-//			out.println(e.getMessage());
-//		}
-       
-    }
+        FormationDao formdao = new FormationDao();
+        String action = request.getParameter("action");
+        int idFormation = Integer.valueOf(request.getParameter("idFormation").trim().toLowerCase());
+        String intitule = request.getParameter("intitule");
+        String description = request.getParameter("description");
+        
+        Formation formation = new Formation() ;
+        formation.setIdFormation(idFormation);
+        formation.setIntituleF(intitule);
+        formation.setDescription(description);
+        if("delete".equalsIgnoreCase(action)){
+            try{
+              
+                    formdao.deleteformById(idFormation);
+                } catch (SQLException ex) {
+                    Logger.getLogger(SupprimerFormationServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+           
+                
+            }
+            
+        }
+        
+        
+    
 
     /**
      * Returns a short description of the servlet.
      *
      * @return a String containing servlet description
      */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+   
 
-}
+

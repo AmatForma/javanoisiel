@@ -53,7 +53,7 @@
                                 </tbody>
                             </table>
 
-<!--                           <div class="clearfix"></div>
+<!--                        <div class="clearfix"></div>
                             <ul class="pagination pull-right">
                                 <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
                                 <li class="active"><a href="#">1</a></li>
@@ -95,7 +95,7 @@
                            
                         </div>
                         <div class="modal-footer ">
-                            <button onclick="location.href='tpcatalogue?action=edit'" type="button" class="btn btn-default btn-lg" action="modifier" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Modifier</button>
+                            <button onclick="location.href='module?action=edit'" type="button" class="btn btn-default btn-lg" action="modifier" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Modifier</button>
                         </div>
                     </div>
                     <!-- /.modal-content --> 

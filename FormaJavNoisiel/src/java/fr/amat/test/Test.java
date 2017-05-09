@@ -5,8 +5,10 @@
  */
 package fr.amat.test;
 
+import fr.amat.bean.Formation;
 import fr.amat.bean.Module;
 import fr.amat.dao.AmatDao;
+import fr.amat.dao.FormationDao;
 import fr.amat.dao.ModuleDao;
 import fr.amat.dao.ModuleFormationDao;
 import fr.amat.dao.PersonneDao;
@@ -37,11 +39,20 @@ public class Test {
     
              
      
-       ModuleFormationDao modform = new ModuleFormationDao();
-       System.out.println( modform.afficherModFor());
+     //  ModuleFormationDao modform = new ModuleFormationDao();
+      // System.out.println( modform.afficherModFor());
       
-       
-       
+       // test fonction delete formation by id 
+      // FormationDao formDao = new FormationDao() ;
+       //formDao.deleteformById(18);
+     
+        FormationDao formDao = new FormationDao() ;
+        Formation form = new Formation();
+        form = formDao.GetById(4);
+        System.out.println(form.getIntitule());
+        System.out.println(form.getDescription());
+    
+    
        
    }
     
