@@ -29,7 +29,7 @@ public class FormationDao {
         Statement ordre = connexion.createStatement();
         ResultSet re1 = ordre.executeQuery(sql);
         while (re1.next()) {
-            Formation formation = new Formation(re1.getString("intitule"), re1.getString("description"));
+            Formation formation = new Formation(re1.getInt("idFormation"), re1.getString("intitule"), re1.getString("description"));
 
             result.add(formation);
         }
@@ -52,7 +52,7 @@ public class FormationDao {
 
     public static Formation update(Formation formation) throws SQLException {
 
-        String sql = "UPDATE  formation SET intitule = ? , description = ?";
+        String sql = "UPDATE  formation SET intitule = ? , description = ? WHERE";
         Connection connexion = AmatDao.getConnection();
         PreparedStatement ordre = connexion.prepareStatement(sql);
         ordre.setString(1, formation.getIntitule());
@@ -63,16 +63,14 @@ public class FormationDao {
         return null;
     }
 
-    public void deleteformById(int id) throws SQLException {
+    public static void deleteformById(int id) throws SQLException {
 
-        Connection connection = AmatDao.getConnection();
-        if (connection != null && !connection.isClosed()) {
-            String sql = "DELETE FROM formation WHERE idFormation = ?";
-            PreparedStatement ordre = connection.prepareStatement(sql);
-            ordre.setInt(1, id);
-            ordre.executeUpdate();
-
-        }
+        String sql = "DELETE FROM formation WHERE idFormation=?";
+        Connection connexion = AmatDao.getConnection();
+        PreparedStatement ordre = connexion.prepareStatement(sql);
+        ordre.setInt(1, id);
+        
+        ordre.execute();
     }
 
     public Formation GetById(int id) throws SQLException {
