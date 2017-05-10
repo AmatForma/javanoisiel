@@ -50,7 +50,7 @@ public class ModuleServlet extends HttpServlet {
                 if(action.equals("delete")){
                     supprimerModule(request, response);
                 }else if(action.equals("edit")){
-                    editerModule(request, response);
+                   // editerModule(request, response);
                 }else if(action.equals("lister")){
                     listerModule(request, response);
                 }
@@ -79,7 +79,7 @@ public class ModuleServlet extends HttpServlet {
     }
     
     
-    public void editerModule(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+    public void editerModule(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException, SQLException{
                 
                 String intitule = request.getParameter("intitule").trim().toLowerCase();
 		String description = request.getParameter("description").trim().toLowerCase();
@@ -89,7 +89,7 @@ public class ModuleServlet extends HttpServlet {
                 module.setIntitule(intitule);
                 module.setNbJour(nbjour);
                 
-		ModuleDao mDAO = new ModuleDao();
+		
 		try {
                         mDAO.modifier(module);
 		} catch (SQLException e) {
@@ -98,28 +98,43 @@ public class ModuleServlet extends HttpServlet {
 		}
     }
     
-    public void listerModule(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+    public void listerModule(HttpServletRequest request, HttpServletResponse response){
+                ModuleDao mDAO = new ModuleDao();
+           try{
+                HttpSession session = request.getSession(true);
+                Module module = (Module) session.getAttribute("module");
                 
-                String intitule = request.getParameter("intitule").trim().toLowerCase();
-		String description = request.getParameter("description").trim().toLowerCase();
-                int nbjour = Integer.valueOf(request.getParameter("nbJour").trim().toLowerCase());
-                module.setDescription(description);
-                module.setIntitule(intitule);
-                module.setNbJour(nbjour);
-                mDAO = new ModuleDao();
+               if(module != null){
+                   List<Module> moduleSession = mDAO.afficher();
+                   request.setAttribute("sessionModule", moduleSession);
+                   request.getRequestDispatcher("/WEB-INF/listeModule.jsp").forward(request, response);
+               }
+                request.setAttribute("loginFaux", "Vous devez vous connecter");
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+//                String intitule = request.getParameter("intitule").trim().toLowerCase();
+//		String description = request.getParameter("description").trim().toLowerCase();
+//                int nbjour = Integer.valueOf(request.getParameter("nbJour").trim().toLowerCase());
+//                module.setDescription(description);
+//                module.setIntitule(intitule);
+//                module.setNbJour(nbjour);
+//                mDAO = new ModuleDao();
                 
-		try {
-                        
-                        mDAO.ajouter(module);
-			listmodule = mDAO.afficher();
-                        Set<Module> listemodule = new HashSet<Module>(listmodule);
-                        List<Module> list = new ArrayList<Module>(listemodule);
-			request.setAttribute("modules", list);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			out.println(e.getMessage());
-		}
-                 request.getRequestDispatcher("/WEB-INF/listeModule.jsp").forward(request, response);
-                 return;
-    }   
+//		try {
+//                        
+//                        mDAO.ajouter(module);
+//			listmodule = mDAO.afficher();
+//                        Set<Module> listemodule = new HashSet<Module>(listmodule);
+//                        List<Module> list = new ArrayList<Module>(listemodule);
+//			request.setAttribute("modules", list);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			out.println(e.getMessage());
+//		}
+                 
+                 
+        }   catch(Exception e){
+            request.setAttribute("msg", e.getMessage());
+            out.println(e.getMessage());
+            }
+    }
 }
