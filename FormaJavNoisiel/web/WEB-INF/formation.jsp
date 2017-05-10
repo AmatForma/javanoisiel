@@ -34,11 +34,12 @@
                         
                         
                     <form action="supforma" method="post"> 
-                        <td><input type="text" name="idForma" value="${formations.idFormation}"/> </td>
-                        <td><p> <button type="submit" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button> </p></td>
-                        <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                        <td><input type="hidden" name="idForma" value="${formations.idFormation}"/> </td>
+                        <form> <td><p> <button type="submit" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button> </p></td></form>
+                        
                     </form>   
                         
+                    <form>
                         <!-- <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="" data-target="#delete"  name="action"><span class="glyphicon glyphicon-trash"></span></button></p></td>
                        --> 
                     </tr>
