@@ -40,7 +40,7 @@
                                 </thead>
 
                                 <tbody>
-                                    <c:forEach items="${modules}" var="module">
+                                    <c:forEach items="${sessionModule}" var="module">
                                         <tr>
                                             <td><input type="checkbox" class="checkthis" /></td>
                                             <td>${module.intitule}</td>

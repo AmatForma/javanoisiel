@@ -46,6 +46,7 @@ public class ConnexionServlet extends HttpServlet {
 				
                             // Le mettre en session
                                 request.getSession(true).setAttribute("membre", membre);
+                                
 				request.setAttribute("membre", membre);
 				request.getRequestDispatcher("/WEB-INF/profil.jsp").forward(request, response);			
 				
