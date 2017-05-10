@@ -101,11 +101,19 @@ public class CandidatureServlet extends HttpServlet {
 //                idEtatCandidature = 1;
 //            } 
 
-String action = request.getParameter("name");
-out.println(action);
-if (        "Refuser".equals(action)) {
-    idEtatCandidature = 2;
-}
+//String action = request.getParameter("name");
+//out.println(action);
+//if (        "Refuser".equals(action)) {
+//    idEtatCandidature = 2;
+//}
+        String btValue = request.getParameter("Accepter");
+
+        if(btValue.equals("accepter")){
+            idEtatCandidature = 1;
+        }
+        else{
+            idEtatCandidature = 2;
+        }
             Candidature candidature = new Candidature(idPersonne, idSession, idEtatCandidature);
             CandidatureDao.update(candidature);
 
