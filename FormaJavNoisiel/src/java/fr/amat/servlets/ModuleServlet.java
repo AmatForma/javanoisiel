@@ -4,6 +4,7 @@ package fr.amat.servlets;
 import fr.amat.bean.Module;
 import fr.amat.dao.ModuleDao;
 import java.io.IOException;
+import static java.lang.System.out;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -14,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -36,13 +38,15 @@ public class ModuleServlet extends HttpServlet {
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+         //HttpSession session = request.getSession(true);
          listmodule = new ArrayList<Module>();
          module = new Module();
          mDAO = new ModuleDao();  
             
-            String action = request.getParameter("action");
-            if(action != null){
+
+           // String action = request.getParameter("action");
+           String action = "lister";
+           if(action != null){
                 if(action.equals("delete")){
                     supprimerModule(request, response);
                 }else if(action.equals("edit")){
@@ -50,7 +54,8 @@ public class ModuleServlet extends HttpServlet {
                 }else if(action.equals("lister")){
                     listerModule(request, response);
                 }
-            }
+           }
+            
     }     
         
                 
@@ -75,6 +80,7 @@ public class ModuleServlet extends HttpServlet {
     
     
     public void editerModule(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+                
                 String intitule = request.getParameter("intitule").trim().toLowerCase();
 		String description = request.getParameter("description").trim().toLowerCase();
                 int nbjour = Integer.valueOf(request.getParameter("nbJour").trim().toLowerCase());
@@ -93,16 +99,17 @@ public class ModuleServlet extends HttpServlet {
     }
     
     public void listerModule(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+                
                 String intitule = request.getParameter("intitule").trim().toLowerCase();
 		String description = request.getParameter("description").trim().toLowerCase();
                 int nbjour = Integer.valueOf(request.getParameter("nbJour").trim().toLowerCase());
                 module.setDescription(description);
                 module.setIntitule(intitule);
                 module.setNbJour(nbjour);
-                   
                 mDAO = new ModuleDao();
                 
 		try {
+                        
                         mDAO.ajouter(module);
 			listmodule = mDAO.afficher();
                         Set<Module> listemodule = new HashSet<Module>(listmodule);
@@ -110,7 +117,7 @@ public class ModuleServlet extends HttpServlet {
 			request.setAttribute("modules", list);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			out.println(e.getMessage());
 		}
                  request.getRequestDispatcher("/WEB-INF/listeModule.jsp").forward(request, response);
                  return;

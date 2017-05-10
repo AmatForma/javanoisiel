@@ -8,14 +8,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Insert title here</title>
         
-        <script type="text/javascript">
+<!--        <script type="text/javascript">
                 function confirmer(url) {
                         var rep = confirm("Etes vous sûre de  vouloir supprimer ?");
                         if (rep == true) {
                                 document.location = url;
                         }
                 }
-        </script>
+        </script>-->
     </head>
     <body>
 
@@ -46,8 +46,8 @@
                                             <td>${module.intitule}</td>
                                             <td>${module.description}</td>
                                             <td>${module.nbJour}</td>
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete" ><button onclick="location.href='"javascript:confirmer("'module?action=delete'")"'" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                                            <td><p data-placement="top"  data-toggle="tooltip" title="Edit"><button name="action" value="edit" type="submit" class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                                            <td><p data-placement="top" name="action" value="delete" data-toggle="tooltip" title="Delete" ><button  type="submit" name="delete" value="delete" class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
@@ -68,6 +68,10 @@
                     </div>
                 </div>
             </div>
+            
+            <form:form commandName="editMeal" method="post"
+    class="form-horizontal form-width">
+<!
 
 
             <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
@@ -79,7 +83,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <input class="form-control " type="text" name="intitule" placeholder="intitule">
+                                <input class="form-control " type="text" name="intitule" value="" placeholder="intitule">
                             </div>
                             
                             <div class="form-group">
@@ -95,7 +99,7 @@
                            
                         </div>
                         <div class="modal-footer ">
-                            <button onclick="location.href='module?action=edit'" type="button" class="btn btn-default btn-lg" action="modifier" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Modifier</button>
+                            <button onclick="" id="modifier" type="button" class="btn btn-default btn-lg" action="modifier" style="width: 30px;"><span class="glyphicon glyphicon-ok-sign"></span> Modifier</button>
                         </div>
                     </div>
                     <!-- /.modal-content --> 

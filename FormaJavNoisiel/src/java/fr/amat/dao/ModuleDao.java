@@ -30,7 +30,9 @@ public class ModuleDao {
 		String sql = " INSERT INTO module (intitule,description,nbJour)VALUES(?,?,?)";
 		if (connection != null && !connection.isClosed()) {
 			try {
+                                
 				statement = connection.prepareStatement(sql);
+                              
 				statement.setString(1, module.getIntitule());
 				statement.setString(2, module.getDescription());
 				statement.setInt(3, module.getNbJour());
@@ -58,12 +60,14 @@ public class ModuleDao {
 		ResultSet resultat = statement.executeQuery();
 		List<Module> list = new ArrayList<Module>();
 		while (resultat.next()) {
+                         int id = resultat.getInt("idModule");
 			 String intitule = resultat.getString("intitule").trim().toLowerCase();
 			 String description = resultat.getString("description").trim().toLowerCase();
 			 int nbJour = resultat.getInt("nbJour");
 			
 			Module module = new Module();
 			if (resultat != null) {
+                                module.setId(id);
 				module.setIntitule(intitule);
 				module.setDescription(description);
 				module.setNbJour(nbJour);

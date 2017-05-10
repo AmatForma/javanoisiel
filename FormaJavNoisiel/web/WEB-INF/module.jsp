@@ -48,7 +48,7 @@
                 <form action="module" method="post" role="form" id="footer-form">
                     <div class="form-group has-feedback">
                         <label class="sr-only" for="name2">MODULE </label>
-                        <input type="text" class="form-control" id="name2" placeholder="Intitulé" name="intitule" required>
+                        <input type="text" class="form-control" id="name2" placeholder="Intitulé" name="intitule" required="">
                        
                     </div>
                     <div class="form-group has-feedback">
