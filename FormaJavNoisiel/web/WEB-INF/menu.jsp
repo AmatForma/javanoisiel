@@ -49,7 +49,7 @@
 
                     <li>
                         <a href="module">
-                            <i class=""></i> Modules
+                            <i class=" "></i> Modules
                         </a>
                     </li>
 
