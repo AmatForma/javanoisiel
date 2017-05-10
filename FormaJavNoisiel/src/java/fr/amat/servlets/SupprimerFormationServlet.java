@@ -6,6 +6,7 @@
 package fr.amat.servlets;
 
 import fr.amat.bean.Formation;
+import fr.amat.bean.Personne;
 import fr.amat.dao.FormationDao;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -77,26 +79,23 @@ public class SupprimerFormationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FormationDao formdao = new FormationDao();
-        String action = request.getParameter("action");
-        int idFormation = Integer.valueOf(request.getParameter("idFormation").trim().toLowerCase());
-        String intitule = request.getParameter("intitule");
-        String description = request.getParameter("description");
-        
-        Formation formation = new Formation() ;
-        formation.setIdFormation(idFormation);
-        formation.setIntituleF(intitule);
-        formation.setDescription(description);
-        if("delete".equalsIgnoreCase(action)){
-            try{
-              
-                    formdao.deleteformById(idFormation);
-                } catch (SQLException ex) {
-                    Logger.getLogger(SupprimerFormationServlet.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-           
+       
+                HttpSession session = request.getSession(true);
+                Personne membre = (Personne) session.getAttribute("membre");
+
+                PrintWriter out = response.getWriter();
                 
+                try {
+                    
+                    int idForma = Integer.parseInt(request.getParameter("idForma"));
+                    FormationDao.deleteformById(idForma);
+            
+        } catch (Exception e) {
+            request.setAttribute("msg", e.getMessage());
+			out.println(e.getMessage());
+        }
+        
+        
             }
             
         }

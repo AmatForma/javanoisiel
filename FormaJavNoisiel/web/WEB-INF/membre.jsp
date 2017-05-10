@@ -14,11 +14,11 @@
 
         <div class="corps">
 
-            <div class="container">
-                <div class="row">
+            
+                
 
 
-                    <div class="col-md-12">
+                   
                         <h2>Liste des personnes </h2>
                         <div class="table-responsive">
 
@@ -67,9 +67,9 @@
                             </ul>
 
                         </div>
-                    </div>
-                </div>
-            </div>
+                   
+                
+          
 
 
             <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">

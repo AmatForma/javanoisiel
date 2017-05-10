@@ -45,6 +45,12 @@ public class Formation {
         this.intitule = intituleF;
         this.description = description;
     }
+
+    public Formation(int idFormation, String intitule, String description) {
+        this.idFormation = idFormation;
+        this.intitule = intitule;
+        this.description = description;
+    }
     
     
     

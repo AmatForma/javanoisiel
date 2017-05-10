@@ -63,5 +63,14 @@
         <url-pattern>/candidature</url-pattern>
     </servlet-mapping>
     
+    
+    <servlet>
+        <servlet-name>SupprimerFormationServlet</servlet-name>
+        <servlet-class>fr.amat.servlets.SupprimerFormationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SupprimerFormationServlet</servlet-name>
+        <url-pattern>/supforma</url-pattern>
+    </servlet-mapping>
    
 </web-app>
