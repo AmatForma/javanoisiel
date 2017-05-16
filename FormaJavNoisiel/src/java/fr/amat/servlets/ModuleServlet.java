@@ -2,6 +2,7 @@
 package fr.amat.servlets;
 
 import fr.amat.bean.Module;
+import fr.amat.bean.Personne;
 import fr.amat.dao.ModuleDao;
 import java.io.IOException;
 import static java.lang.System.out;
@@ -10,6 +11,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,8 +33,7 @@ public class ModuleServlet extends HttpServlet {
    
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/module.jsp").forward(request, response);
-        return;
+         this.listerModule(request, response);    
     }
 
    
@@ -39,28 +41,37 @@ public class ModuleServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          //HttpSession session = request.getSession(true);
+         
          listmodule = new ArrayList<Module>();
          module = new Module();
          mDAO = new ModuleDao();  
             
 
-           // String action = request.getParameter("action");
-           String action = "lister";
+           String action = request.getParameter("name");
            if(action != null){
                 if(action.equals("delete")){
-                    supprimerModule(request, response);
+                    try {
+                        supprimerModule(request, response);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ModuleServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }else if(action.equals("edit")){
-                   // editerModule(request, response);
-                }else if(action.equals("lister")){
-                    listerModule(request, response);
+                    try {
+                        editerModule(request, response);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ModuleServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
+                    listerModule(request, response);    
            }
             
     }     
         
                 
     
-    public void supprimerModule(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+    public void supprimerModule(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException, SQLException{
+                 ModuleDao mDAO = new ModuleDao();
+
                 String intitule = request.getParameter("intitule").trim().toLowerCase();
 		String description = request.getParameter("description").trim().toLowerCase();
                 int nbjour = Integer.valueOf(request.getParameter("nbJour").trim().toLowerCase());
@@ -68,10 +79,11 @@ public class ModuleServlet extends HttpServlet {
                 module.setDescription(description);
                 module.setIntitule(intitule);
                 module.setNbJour(nbjour);
-                
+                listerModule(request, response);
 		mDAO = new ModuleDao();
 		try {
                         mDAO.deleteById(module.getId());
+                        listerModule(request, response);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -88,8 +100,7 @@ public class ModuleServlet extends HttpServlet {
                 module.setDescription(description);
                 module.setIntitule(intitule);
                 module.setNbJour(nbjour);
-                
-		
+        
 		try {
                         mDAO.modifier(module);
 		} catch (SQLException e) {
@@ -102,9 +113,9 @@ public class ModuleServlet extends HttpServlet {
                 ModuleDao mDAO = new ModuleDao();
            try{
                 HttpSession session = request.getSession(true);
-                Module module = (Module) session.getAttribute("module");
+                Personne personne = (Personne) session.getAttribute("membre");
                 
-               if(module != null){
+               if(personne != null){
                    List<Module> moduleSession = mDAO.afficher();
                    request.setAttribute("sessionModule", moduleSession);
                    request.getRequestDispatcher("/WEB-INF/listeModule.jsp").forward(request, response);

@@ -72,5 +72,8 @@
         <servlet-name>SupprimerFormationServlet</servlet-name>
         <url-pattern>/supforma</url-pattern>
     </servlet-mapping>
-   
+   <servlet-mapping>
+        <servlet-name>ModuleServlet</servlet-name>
+        <url-pattern>/module</url-pattern>
+    </servlet-mapping>
 </web-app>
